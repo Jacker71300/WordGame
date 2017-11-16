@@ -376,7 +376,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab35c18fc0007f44eb511085fdd4bdce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 9.99
+  rotationSpeed: 15
+  minSize: 6
+  maxSize: 13
+  pulseSpeed: 10
 --- !u!212 &2066287569
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -429,7 +432,7 @@ Transform:
   m_GameObject: {fileID: 2066287567}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 6, y: 6, z: 3.6248555}
+  m_LocalScale: {x: 6, y: 6, z: 6}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1

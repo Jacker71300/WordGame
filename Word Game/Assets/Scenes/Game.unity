@@ -377,6 +377,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e59ec2791d8147b44a33bc9120789d24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneName: MainMenu
 --- !u!1 &918916711
 GameObject:
   m_ObjectHideFlags: 0
@@ -635,7 +636,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab35c18fc0007f44eb511085fdd4bdce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 15
+  rotationSpeed: 10
   minSize: 6
   maxSize: 13
   pulseSpeed: 10

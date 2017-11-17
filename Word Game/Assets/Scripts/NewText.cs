@@ -16,7 +16,7 @@ public class NewText : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		
-		thisTransform.localScale.Set (0, 0, 0);
+		thisTransform.localScale.Set (0.0f, 0.0f, 0.0f);
 	}
 
     // Update is called once per frame
@@ -25,7 +25,7 @@ public class NewText : MonoBehaviour {
 
         if (!hitMaxSize && !(transform.localScale.x > maxSize))
         {
-            transform.localScale = new Vector3((transform.localScale.x + (.01f * pulseSpeed)), (transform.localScale.x + (.01f * pulseSpeed)), (transform.localScale.x + (.01f * pulseSpeed)));
+            transform.localScale = new Vector3((transform.localScale.x + (0.01f * pulseSpeed)), (transform.localScale.x + (0.01f * pulseSpeed)), (transform.localScale.x + (0.01f * pulseSpeed)));
         }
         else
         {
@@ -33,7 +33,7 @@ public class NewText : MonoBehaviour {
             hitMinSize = false;
             if (!hitMinSize && !(transform.localScale.x < minSize))
             {
-                transform.localScale = new Vector3(transform.localScale.x - (.01f * pulseSpeed), transform.localScale.x - (.01f * pulseSpeed), transform.localScale.x - (.01f * pulseSpeed));
+                transform.localScale = new Vector3(transform.localScale.x - (0.01f * pulseSpeed), transform.localScale.x - (0.01f * pulseSpeed), transform.localScale.x - (0.01f * pulseSpeed));
             }
             else
             {

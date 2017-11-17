@@ -7,9 +7,10 @@ public class StartButton : MonoBehaviour {
 	// Instance variables
 	public string sceneName = "MainMenu";
     
+	private string fileName = "";
 	// Use this for initialization
 	void Start () {
-		
+	
 	}
 	
 	// Update is called once per frame
@@ -21,4 +22,13 @@ public class StartButton : MonoBehaviour {
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
     }
+
+	public void setFileName(){
+		fileName = GameObject.Find ("Text").GetComponent<GUIText> ().ToString ();
+		string fileDirectory = System.IO.Directory.GetCurrentDirectory ();
+
+		fileDirectory.Substring (0, fileDirectory.Length - 22);
+		fileDirectory += "Selection.txt";
+		System.IO.File.WriteAllText (fileDirectory, fileName);
+	}
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class StartButton : MonoBehaviour {
 
+    
 	// Use this for initialization
 	void Start () {
 		
@@ -11,6 +12,11 @@ public class StartButton : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        
 	}
+
+    public void changeScene()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+    }
 }

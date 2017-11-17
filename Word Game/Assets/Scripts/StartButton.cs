@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class StartButton : MonoBehaviour {
 
+	// Instance variables
+	public string sceneName = "MainMenu";
     
 	// Use this for initialization
 	void Start () {
@@ -17,6 +19,6 @@ public class StartButton : MonoBehaviour {
 
     public void changeScene()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
     }
 }

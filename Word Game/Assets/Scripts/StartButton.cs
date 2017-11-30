@@ -24,13 +24,6 @@ public class StartButton : MonoBehaviour {
     }
 
 	public void setFileName(){
-		fileName = GameObject.Find ("Text").GetComponent<GUIText> ().ToString ();
-		string fileDirectory = System.IO.Directory.GetCurrentDirectory ();
 
-		fileDirectory.Substring (0, fileDirectory.Length - 21);
-		fileDirectory += "/Assets/Vocab Lists/Selection.txt";
-		System.IO.File.WriteAllText (fileDirectory, string.Empty);
-		print (fileDirectory);
-		System.IO.File.WriteAllText (fileDirectory, fileName);
 	}
 }

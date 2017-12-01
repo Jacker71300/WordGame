@@ -16,7 +16,7 @@ public class SetFileName : MonoBehaviour {
 	}
 
 	void onValueChanged(){
-		fileName = ;
+		//fileName = ;
 		string fileDirectory = System.IO.Directory.GetCurrentDirectory ();
 
 		fileDirectory.Substring (0, fileDirectory.Length - 21);

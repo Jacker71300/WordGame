@@ -7,7 +7,6 @@ public class StartButton : MonoBehaviour {
 	// Instance variables
 	public string sceneName = "MainMenu";
     
-	private string fileName = "";
 	// Use this for initialization
 	void Start () {
 	

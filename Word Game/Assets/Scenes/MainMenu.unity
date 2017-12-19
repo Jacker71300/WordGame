@@ -456,6 +456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c9c4c3819ded504cb99d68c211c42da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropbox: {fileID: 1729696296}
   fileName: Chapter 1
 --- !u!1 &194425076
 GameObject:
@@ -539,7 +540,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 194425076}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 440, y: 163, z: 0}
+  m_LocalPosition: {x: 439, y: 159.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 59127112}

@@ -58,14 +58,12 @@ public class GameController : MonoBehaviour {
 	void WordSuccess(){
 		currentIndex++;
 
-		try{
-			for(int i = 0; i < 25; i++){
-				GameObject holder = (GameObject)letterPics[i];
-				letterPics.RemoveAt(i);
-				Destroy(holder, .001f);
-			}
+		for(int i = 0; i < letterPics.Count; i++){
+			GameObject holder = letterPics[i] as GameObject;
+			letterPics.RemoveAt(i);
+			DestroyImmediate(holder.gameObject);
 		}
-		catch{	}
+			
 		try{
 			CreateWord ();
 		}
@@ -92,30 +90,8 @@ public class GameController : MonoBehaviour {
 			string filename = letters [i].ToString ().ToUpper ();
 			holder.GetComponent<Image> ().sprite = Resources.Load<Sprite>(filename);
 			print (filename);
-			letterPics.Add (holder);
+			letterPics.Add (GameObject.Find(holder.name));
 			print (letters [i]);
-		}
-	}
-
-	public void addChar(GameObject letterbox){
-		string name = letterbox.GetComponent<Image> ().sprite.name;
-		guess += name;
-	}
-
-	public void removeChar(GameObject letterbox){
-		string name = letterbox.GetComponent<Image> ().sprite.name;
-		char[] holder = guess.ToCharArray ();
-
-		for(int i = holder.Length; i >= 0; i--){
-			if (holder [i] == name.ToCharArray () [0])
-				holder [i] = '|';
-		}
-
-		guess = "";
-
-		for (int i = 0; i < holder.Length; i++) {
-			if (holder [i] != '|')
-				guess += holder [i];
 		}
 	}
 }

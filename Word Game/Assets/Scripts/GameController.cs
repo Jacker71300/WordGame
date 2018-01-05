@@ -13,7 +13,6 @@ public class GameController : MonoBehaviour {
 
 	private int currentIndex = 0;
 	private string guess = "";
-	private int index = 0;
 	private string currentWord = "";
 	// Use this for initialization
 	void Start () {
@@ -38,13 +37,35 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(guess.Equals(currentWord)){
+		string fileDirectory = System.IO.Directory.GetCurrentDirectory ();
+
+		fileDirectory.Substring (0, fileDirectory.Length - 24);
+		fileDirectory += "/Assets/Vocab Lists/Guess.txt";
+		try{
+			guess = System.IO.File.ReadAllLines(fileDirectory)[0];
+		}
+		catch{
+			guess = "";
+		}
+
+		print (guess);
+
+		if(guess.ToUpper().Equals(currentWord.ToUpper())){
 			WordSuccess();
 		}
 	}
 
 	void WordSuccess(){
 		currentIndex++;
+
+		try{
+			for(int i = 0; i < 25; i++){
+				GameObject holder = (GameObject)letterPics[i];
+				letterPics.RemoveAt(i);
+				Destroy(holder, .001f);
+			}
+		}
+		catch{	}
 		try{
 			CreateWord ();
 		}
@@ -54,7 +75,7 @@ public class GameController : MonoBehaviour {
 	}
 
 	void Win(){
-
+		UnityEngine.SceneManagement.SceneManager.LoadScene ((int)(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex) - 1);
 	}
 
 	void CreateWord(){

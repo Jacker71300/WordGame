@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114478351627018992}
   - component: {fileID: 114530877125041696}
   - component: {fileID: 114001345678290242}
+  - component: {fileID: 114926536453042480}
   m_Layer: 5
   m_Name: Letter
   m_TagString: Untagged
@@ -85,35 +86,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
-  - eventID: 9
+  - eventID: 4
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114247651073806446, guid: dde29801773a5804480ee1061a27a20d,
-            type: 2}
-          m_MethodName: addChar
-          m_Mode: 2
+        - m_Target: {fileID: 114926536453042480}
+          m_MethodName: changeChar
+          m_Mode: 1
           m_Arguments:
-            m_ObjectArgument: {fileID: 1045906859761068}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  - eventID: 10
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 114247651073806446, guid: dde29801773a5804480ee1061a27a20d,
-            type: 2}
-          m_MethodName: removeChar
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 1045906859761068}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -122,6 +104,18 @@ MonoBehaviour:
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
+--- !u!114 &114926536453042480
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1045906859761068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9438468d30098c4887ef2381273a60d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 1045906859761068}
 --- !u!222 &222431371269398254
 CanvasRenderer:
   m_ObjectHideFlags: 1

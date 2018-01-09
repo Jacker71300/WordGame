@@ -60,8 +60,10 @@ public class WriteCharacter : MonoBehaviour {
 		for(int i = holder.Length - 1; i >= 0; i--){
 			//print (nameImage.ToCharArray ().Length);
 			//print (i);
-			if (holder [i] == nameImage.ToCharArray () [0])
+			if (holder [i] == nameImage.ToCharArray () [0]) {
 				holder [i] = '|';
+				break;
+			}
 		}
 
 		currentGuess = "";

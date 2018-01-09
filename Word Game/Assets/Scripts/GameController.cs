@@ -10,8 +10,8 @@ public class GameController : MonoBehaviour {
 	public ArrayList letterPics = new ArrayList();
 	public Transform Letter;
 	public Transform canvas;
+	public Text text;
 
-	private int currentIndex = 0;
 	private string guess = "";
 	private string currentWord = "";
 	// Use this for initialization
@@ -43,12 +43,14 @@ public class GameController : MonoBehaviour {
 		fileDirectory += "/Assets/Vocab Lists/Guess.txt";
 		try{
 			guess = System.IO.File.ReadAllLines(fileDirectory)[0];
+			text.text = guess;
 		}
 		catch{
 			guess = "";
+			text.text = guess;
 		}
 
-		print (guess);
+		//print (guess);
 
 		if(guess.ToUpper().Equals(currentWord.ToUpper())){
 			WordSuccess();
@@ -56,12 +58,14 @@ public class GameController : MonoBehaviour {
 	}
 
 	void WordSuccess(){
-		currentIndex++;
-
-		for(int i = 0; i < letterPics.Count; i++){
-			GameObject holder = letterPics[i] as GameObject;
-			letterPics.RemoveAt(i);
-			DestroyImmediate(holder.gameObject);
+		
+		while(letterPics.Count > 0){
+			for(int i = letterPics.Count - 1; i >= 0; i--) {
+				GameObject holder = letterPics[i] as GameObject;
+				letterPics.RemoveAt(i);
+				print ("destroy " + holder);
+				DestroyImmediate (holder);
+			}
 		}
 			
 		try{
@@ -77,21 +81,64 @@ public class GameController : MonoBehaviour {
 	}
 
 	void CreateWord(){
-		currentWord = (string) listWords [currentIndex];
-		listWords.RemoveAt (currentIndex);
+		currentWord = (string) listWords [0];
+		listWords.RemoveAt (0);
 		currentWord = currentWord.ToLower ();
 
-		char[] letters = currentWord.ToCharArray ();
+		char[] letters = shuffle(currentWord.ToCharArray ());
 
+		// create the positions where the pictures will show up
+		float[] positionsX = new float[letters.Length];
+		float[] positionsY = new float[letters.Length];
 
+		const float WIDTH = 686f;
+		const float HEIGHT = 321f * 2f/3f;
+		const float MAX_PER_LINE = 6;
+		int numLetters = letters.Length;
+
+		if (numLetters > MAX_PER_LINE) {
+			for (int i = 0; i < (int)(numLetters / MAX_PER_LINE + .5); i++) {
+				for (int holder = (int)(i * numLetters / MAX_PER_LINE); holder < numLetters; holder++) {
+					positionsY [holder] = HEIGHT * (i + 1) / (int)(numLetters / MAX_PER_LINE + .5);
+				}
+			}
+		} else {
+			for (int i = 0; i < positionsY.Length; i++) {
+				positionsY [i] = HEIGHT * 1 / 2;
+			}
+		}
+
+		for (int i = 0; i < numLetters; i++) {
+
+		}
+
+		letterPics.Clear ();
+
+		// create the pictures in the game
 		for(int i = 0; i < letters.Length; i++){
 			Transform holder = Instantiate (Letter, new Vector3 (100f * i + 100f, 75f), Quaternion.identity) as RectTransform;
 			holder.SetParent (canvas);
+			holder.name = "unity" + i;
 			string filename = letters [i].ToString ().ToUpper ();
 			holder.GetComponent<Image> ().sprite = Resources.Load<Sprite>(filename);
-			print (filename);
+			//print (filename);
 			letterPics.Add (GameObject.Find(holder.name));
-			print (letters [i]);
+			//print (letterPics[i]);
+			//print (letters [i]);
 		}
+
+
+	}
+
+	char[] shuffle(char[] charArray){
+		char[] shuffled = new char[charArray.Length];
+		int random;
+
+		for (int i = charArray.Length; i >= 1; i--) {
+			random = (int)Random.Range (1f, i + 1f) - 1;
+			shuffled [i - 1] = charArray [random];
+			charArray [random] = charArray [i - 1];
+		}
+		return shuffled;
 	}
 }

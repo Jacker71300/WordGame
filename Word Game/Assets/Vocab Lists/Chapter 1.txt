@@ -9,7 +9,7 @@ ocho
 nueve
 diez
 once
-dose
+doce
 trese
 catorce
 quince

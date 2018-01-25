@@ -16,6 +16,7 @@ public class NewText : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		
+		// Set the image size to the minimum
 		thisTransform.localScale.Set (0.0f, 0.0f, 0.0f);
 	}
 
@@ -23,7 +24,8 @@ public class NewText : MonoBehaviour {
     void Update()
     {
 
-        if (!hitMaxSize && !(transform.localScale.x > maxSize))
+		// Check to see if the image has gotten to its max size and if not, keep increasing the size
+		if (!hitMaxSize && !(transform.localScale.x > maxSize))
         {
             transform.localScale = new Vector3((transform.localScale.x + (0.01f * pulseSpeed)), (transform.localScale.x + (0.01f * pulseSpeed)), (transform.localScale.x + (0.01f * pulseSpeed)));
         }
@@ -31,7 +33,9 @@ public class NewText : MonoBehaviour {
         {
             hitMaxSize = true;
             hitMinSize = false;
-            if (!hitMinSize && !(transform.localScale.x < minSize))
+
+			// If it has hit max size, start decreasing the size until the image hits minimum size
+			if (!hitMinSize && !(transform.localScale.x < minSize))
             {
                 transform.localScale = new Vector3(transform.localScale.x - (0.01f * pulseSpeed), transform.localScale.x - (0.01f * pulseSpeed), transform.localScale.x - (0.01f * pulseSpeed));
             }

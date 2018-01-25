@@ -17,12 +17,9 @@ public class StartButton : MonoBehaviour {
         
 	}
 
+	// Handles when the start button has been pressed
     public void changeScene()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
     }
-
-	public void setFileName(){
-
-	}
 }

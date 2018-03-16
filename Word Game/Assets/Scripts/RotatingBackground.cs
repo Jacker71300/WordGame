@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Makes the background rotate
 public class RotatingBackground : MonoBehaviour {
 
 	// Instance Variables
@@ -19,9 +20,9 @@ public class RotatingBackground : MonoBehaviour {
 		transform.localScale.Set (minSize, minSize, minSize);
 	}
 	
-	// Update is called once per frame
+	// Update is called once per tick
 	void Update () {
-		//  Rotate the background by rotationSpeed(degrees) per second
+		// Rotate the background by rotationSpeed(degrees) per second
 		transform.Rotate (Vector3.forward * Time.deltaTime * rotationSpeed);
 
 		// Check to see if the image has gotten to its max size and if not, keep increasing the size

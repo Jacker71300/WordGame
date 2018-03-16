@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Changes scenes
 public class StartButton : MonoBehaviour {
 
 	// Instance variables

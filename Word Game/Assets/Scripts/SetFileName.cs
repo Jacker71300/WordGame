@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// Used to select the current vocab list
 public class SetFileName : MonoBehaviour {
 	public Text dropbox = null;
 	public string fileName = "Chapter 1";
@@ -18,12 +19,12 @@ public class SetFileName : MonoBehaviour {
 		string fileDirectory = System.IO.Directory.GetCurrentDirectory ();
 
 		fileDirectory.Substring (0, fileDirectory.Length - 21);
-		fileDirectory += "/Assets/Vocab Lists/Selection.txt";
+		fileDirectory += "/Assets/TextFiles/Selection.txt";
 
 		// Clear file of residual data and write the selected file name
 		System.IO.File.WriteAllText (fileDirectory, string.Empty);
-		print (fileDirectory);
-		print (fileName);
+		//print (fileDirectory);
+		//print (fileName);
 		System.IO.File.WriteAllText (fileDirectory, fileName);
 	}
 }

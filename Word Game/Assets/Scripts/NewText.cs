@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Makes the texts (images) pulsate
 public class NewText : MonoBehaviour {
 
 	// Instance Variables

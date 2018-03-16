@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// Handles when the letters are selected/deselcted
 public class WriteCharacter : MonoBehaviour {
 	public GameObject image;
 
@@ -12,12 +13,13 @@ public class WriteCharacter : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		// Get the character the picture represents
+		print(image.GetComponent<Image>().sprite.name);
 		fileName = image.GetComponent<Image> ().sprite.name;
 		string fileDirectory = System.IO.Directory.GetCurrentDirectory ();
 
 		// Reset the current guess file to remove residual characters
 		fileDirectory.Substring (0, fileDirectory.Length - 24);
-		fileDirectory += "/Assets/Vocab Lists/Guess.txt";
+		fileDirectory += "/Assets/TextFiles/Guess.txt";
 		System.IO.File.WriteAllText (fileDirectory, string.Empty);
 	}
 	
@@ -46,7 +48,7 @@ public class WriteCharacter : MonoBehaviour {
 
 		// Find the guess file and fetch the guess
 		fileDirectory.Substring (0, fileDirectory.Length - 24);
-		fileDirectory += "/Assets/Vocab Lists/Guess.txt";
+		fileDirectory += "/Assets/TextFiles/Guess.txt";
 		string currentGuess = System.IO.File.ReadAllText (fileDirectory);
 
 		// Clear the file and append the new character onto the current guess, then write that back to the file
@@ -64,7 +66,7 @@ public class WriteCharacter : MonoBehaviour {
 
 		// Fetch the guess file
 		fileDirectory.Substring (0, fileDirectory.Length - 24);
-		fileDirectory += "/Assets/Vocab Lists/Guess.txt";
+		fileDirectory += "/Assets/TextFiles/Guess.txt";
 		string currentGuess = System.IO.File.ReadAllText (fileDirectory);
 
 		// Split the current guess for processing

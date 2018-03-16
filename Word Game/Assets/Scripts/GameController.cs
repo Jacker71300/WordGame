@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// Controls the game screen and behind the scenes calculations
 public class GameController : MonoBehaviour {
 
 	// Instance Variables
@@ -22,11 +23,11 @@ public class GameController : MonoBehaviour {
 		string fileChoice;
 
 		fileDirectory.Substring (0, fileDirectory.Length - 24);
-		fileChoice = System.IO.File.ReadAllText(fileDirectory + "/Assets/Vocab Lists/Selection.txt");
+		fileChoice = System.IO.File.ReadAllText(fileDirectory + "/Assets/TextFiles/Selection.txt");
 
 		fileDirectory += "/Assets/Vocab Lists/" + fileChoice + ".txt";
 
-		listWords.AddRange(System.IO.File.ReadAllLines (fileDirectory));
+		listWords.AddRange(System.IO.File.ReadAllLines (fileDirectory, System.Text.Encoding.GetEncoding("iso-8859-1")));
 
 		// Shuffle the words
 		for(int i = Random.Range(0, 101); i > 0; i --){
@@ -44,7 +45,7 @@ public class GameController : MonoBehaviour {
 		string fileDirectory = System.IO.Directory.GetCurrentDirectory ();
 
 		fileDirectory.Substring (0, fileDirectory.Length - 24);
-		fileDirectory += "/Assets/Vocab Lists/Guess.txt";
+		fileDirectory += "/Assets/TextFiles/Guess.txt";
 		try{
 			guess = System.IO.File.ReadAllLines(fileDirectory)[0];
 			text.text = guess;
@@ -87,6 +88,7 @@ public class GameController : MonoBehaviour {
 		UnityEngine.SceneManagement.SceneManager.LoadScene ((int)(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex) - 1);
 	}
 
+	// Handles creating a new word out of images
 	void CreateWord(){
 		currentWord = (string) listWords [0];
 		listWords.RemoveAt (0);
@@ -99,18 +101,28 @@ public class GameController : MonoBehaviour {
 		float[] positionsX = new float[letters.Length];
 		float[] positionsY = new float[letters.Length];
 
-		const float WIDTH = 686f/3f;
+		const float WIDTH = 750f;
 		const float HEIGHT = 321f * 3f/5f;
-		const float MAX_PER_LINE = 6;
+		const float MAX_PER_LINE = 10;
 		int numLetters = letters.Length;
 
 		// Set y values
 		if (numLetters > MAX_PER_LINE) {
 			print ("moreThan5");
-			for (int i = 0; i <= (int)((float)numLetters / MAX_PER_LINE + .5); i++) {
-				for (int holder = (int)(i * numLetters / MAX_PER_LINE); holder < numLetters; holder++) {
-					positionsY [holder] = HEIGHT / (i + 1) / (int)(numLetters / MAX_PER_LINE + .5);
+
+			int lines = (int)((float)numLetters / MAX_PER_LINE + 0.999f);
+			int numPerLineHighest = (int)((float)numLetters / lines + 0.999f);
+
+			for (int i = 0; i < lines; i++) {
+				try{
+					for (int holder = numPerLineHighest * i; holder < (numPerLineHighest * (i + 1)); holder++) {
+						positionsY [holder] = HEIGHT / lines * (i + 1);
+						print(positionsY[holder]);
+						print(holder);
+						print(HEIGHT/lines*(i+1));
+					}
 				}
+				catch{/* Values are finished being set */}
 			}
 		} else {
 			print ("lessThan5");
@@ -126,11 +138,11 @@ public class GameController : MonoBehaviour {
 		for (int i = 0; i < numLetters; i++) {
 			try{
 				if (positionsY [i] == positionsY [i + 1]) {
-					counter++;
+					counter++;;
 				}
 				else{
 					for(int x = 0; x < counter; x++){
-						positionsX[i-x] = WIDTH/counter * lineNumber * (x + 1);
+						positionsX[i-x] = WIDTH/counter * (x + 1);
 					}
 					lineNumber++;
 					counter = 1;
@@ -138,13 +150,17 @@ public class GameController : MonoBehaviour {
 			}
 			catch{
 				for(int x = 0; x < counter; x++){
-					positionsX[i-x] = WIDTH/counter * lineNumber * (x + 1);
+					positionsX[i-x] = WIDTH/counter * (x + 1);
 				}
 				lineNumber = 1;
 				counter = 1;
 			}
 		}
 
+		for (int i = 0; i < positionsX.Length; i++) {
+			print ("( " + positionsX [i] + " , " + positionsY[i] + " )");
+		}
+			
 		// Clear the arraylist to make sure nothing is left over from the last word
 		letterPics.Clear ();
 
@@ -159,6 +175,8 @@ public class GameController : MonoBehaviour {
 
 			// Get the file name of the picture representing the character and set as sprite
 			string filename = letters [i].ToString ().ToUpper ();
+			print (letters [i].ToString ().ToUpper ());
+			print (letters [i].ToString ());
 			holder.GetComponent<Image> ().sprite = Resources.Load<Sprite>(filename);
 
 			// Add the game reference of the current object to an arraylist for deletion later

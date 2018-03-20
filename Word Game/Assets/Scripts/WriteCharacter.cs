@@ -46,6 +46,11 @@ public class WriteCharacter : MonoBehaviour {
 		fileName = image.GetComponent<Image> ().sprite.name;
 		string fileDirectory = System.IO.Directory.GetCurrentDirectory ();
 
+		// Shade the current picture
+		string temp = image.GetComponent<Image> ().sprite.ToString();
+		print (temp);
+		image.GetComponent<Image> ().sprite = Resources.Load<Sprite>(temp.Substring(0, 1) + "s");
+
 		// Find the guess file and fetch the guess
 		fileDirectory.Substring (0, fileDirectory.Length - 24);
 		fileDirectory += "/Assets/TextFiles/Guess.txt";
@@ -64,6 +69,10 @@ public class WriteCharacter : MonoBehaviour {
 		string nameImage = image.GetComponent<Image> ().sprite.name;
 		string fileDirectory = System.IO.Directory.GetCurrentDirectory ();
 
+		// Unshade the current picture
+		string temp = image.GetComponent<Image> ().sprite.ToString();
+		image.GetComponent<Image> ().sprite = Resources.Load<Sprite>(temp.Substring(0, 1));
+	
 		// Fetch the guess file
 		fileDirectory.Substring (0, fileDirectory.Length - 24);
 		fileDirectory += "/Assets/TextFiles/Guess.txt";

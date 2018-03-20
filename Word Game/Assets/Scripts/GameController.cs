@@ -101,9 +101,9 @@ public class GameController : MonoBehaviour {
 		float[] positionsX = new float[letters.Length];
 		float[] positionsY = new float[letters.Length];
 
-		const float WIDTH = 750f;
-		const float HEIGHT = 321f * 3f/5f;
-		const float MAX_PER_LINE = 10;
+		float WIDTH = Screen.width;
+		float HEIGHT = Screen.height * 3f/5f;
+		float MAX_PER_LINE = 10;
 		int numLetters = letters.Length;
 
 		// Set y values
@@ -142,7 +142,7 @@ public class GameController : MonoBehaviour {
 				}
 				else{
 					for(int x = 0; x < counter; x++){
-						positionsX[i-x] = WIDTH/counter * (x + 1);
+						positionsX[i-x] = WIDTH/(counter + 1) * (x + 1);
 					}
 					lineNumber++;
 					counter = 1;
@@ -150,7 +150,7 @@ public class GameController : MonoBehaviour {
 			}
 			catch{
 				for(int x = 0; x < counter; x++){
-					positionsX[i-x] = WIDTH/counter * (x + 1);
+					positionsX[i-x] = WIDTH/(counter + 1) * (x + 1);
 				}
 				lineNumber = 1;
 				counter = 1;

@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class SetFileName : MonoBehaviour {
 	public Text dropbox = null;
 	public string fileName = "Chapter 1";
+	public Button button = null;
 	// Use this for initialization
 	void Start () {
 		
@@ -26,5 +27,11 @@ public class SetFileName : MonoBehaviour {
 		//print (fileDirectory);
 		//print (fileName);
 		System.IO.File.WriteAllText (fileDirectory, fileName);
+
+		if (fileName.ToUpper ().Equals ("")) {
+			button.interactable = false;
+		} else {
+			button.interactable = true;
+		}
 	}
 }

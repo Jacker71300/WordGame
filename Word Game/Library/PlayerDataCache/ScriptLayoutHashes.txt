@@ -110,7 +110,8 @@ bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.Audi
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
 c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingCollider
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
-4001f2c05c331f05fa1b29271f30d3e5 Assembly-CSharp.dll:.GameController
+3993d60df8d197aab4f2ca15a6bed03d Assembly-CSharp.dll:.GameController
+650c1e412dac0323d37ae3023565f947 Assembly-CSharp.dll:.Hint
 65b101a9c6d146186ed8d30110ff3dff Assembly-CSharp.dll:.SetFileName
 7bdd71fff980bb38968d2f8da56311d1 Assembly-CSharp.dll:.WriteCharacter
 63476c3cd723e567416f94104be571f7 Assembly-CSharp.dll:.StartButton
@@ -133,7 +134,7 @@ e9bdabf9265d758d56f01bb188916fa8 UnityEngine.Networking.dll:UnityEngine.Networki
 64eb32cc721b1cc68a91ed57461e188c UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.RemoteTestResultSender
 e0f7ffd5d5c2abe4b2e16569a21163da UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioRoom
 e0f7ffd5d5c2abe4b2e16569a21163da UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioRoom
-53769116047dfe8dab472334d49c307d Assembly-CSharp.dll:.SetPosition
+adee4c58048c2fdbdde948c42a4ba97a Assembly-CSharp.dll:.SetPosition
 bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.AudioSpatializerMicrosoft
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInput
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
@@ -141,6 +142,7 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
 ff32d2aac48d4fb30fc912bbe13f9879 Assembly-CSharp.dll:.GetTextFiles
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
+7ea517a687d1c46835c546017c6f3f58 Assembly-CSharp.dll:.SetSize
+2028d3dce5fbf66cd2cedd2d77691e0e Assembly-CSharp.dll:.AddByDirectory
 8a3f25a45de1c063b6cca18feefad38d Assembly-CSharp.dll:.RotatingBackground
 e03786907b485bf73871e58be148f137 Assembly-CSharp.dll:.AddFile
-7ea517a687d1c46835c546017c6f3f58 Assembly-CSharp.dll:.SetSize

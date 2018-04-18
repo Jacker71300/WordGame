@@ -8,9 +8,12 @@ using UnityEngine;
 
 public class SetPosition : MonoBehaviour {
 	public Transform transform;
+	public float heightMultiplier;
+	public float widthMultiplier;
+
 	// Use this for initialization
 	void Start () {
-		transform.position = new Vector3(Screen.width / 2, Screen.height * 4 / 5);
+		transform.position = new Vector3(Screen.width *widthMultiplier, Screen.height *heightMultiplier);
 	}
 	
 	// Update is called once per frame

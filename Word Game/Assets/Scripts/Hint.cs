@@ -5,8 +5,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Hint : MonoBehaviour {
+	public Text text = null;
+
 	private string currentWord = "";
 	private string hint = "";
 
@@ -35,7 +38,7 @@ public class Hint : MonoBehaviour {
 		}
 
 		// Print the hint
-		print (hint);
+		text.text = (hint);
 	}
 
 	// Called when a new word appears
@@ -64,6 +67,7 @@ public class Hint : MonoBehaviour {
 			}
 			else
 				hint = hint.Substring (0, randomNums [i]) + ("_") + hint.Substring (randomNums [i] + 1);
+			hint = hint.ToUpper ();
 		}
 
 	}

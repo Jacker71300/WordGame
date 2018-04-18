@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour {
 	public Transform Letter;
 	public Transform canvas;
 	public Text text;
+	public Text hintText;
 
 	private string guess = "";
 	private string currentWord = "";
@@ -67,6 +68,8 @@ public class GameController : MonoBehaviour {
 
 	// Handles when word is guessed correctly
 	void WordSuccess(){
+		// Clear the hint text
+		hintText.text = "";
 
 		// Delete all game instances of letters
 		while(letterPics.Count > 0){

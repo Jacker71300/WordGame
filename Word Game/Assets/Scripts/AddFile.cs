@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿/*
+ * J. Hoffman
+ * Adds a file to the game with words on it that the user inputs
+ */
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;

@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿/*
+ * J. Hoffman
+ * Controls the game while words are being guessed
+ */
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -85,7 +89,7 @@ public class GameController : MonoBehaviour {
 	// Handles when all words have been completed
 	void Win(){
 		// Change scene to main menu
-		UnityEngine.SceneManagement.SceneManager.LoadScene ((int)(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex) - 1);
+		UnityEngine.SceneManagement.SceneManager.LoadScene ("Win");
 	}
 
 	// Handles creating a new word out of images
@@ -93,6 +97,15 @@ public class GameController : MonoBehaviour {
 		currentWord = (string) listWords [0];
 		listWords.RemoveAt (0);
 		currentWord = currentWord.ToLower ().Replace(" ", "");
+
+		// Puts the word in a file to be accessed by the hint script
+		string fileDirectory = System.IO.Directory.GetCurrentDirectory ();
+
+		fileDirectory.Substring (0, fileDirectory.Length - 24);
+		fileDirectory += "/Assets/TextFiles/CurrentWord.txt";
+
+		System.IO.File.WriteAllText (fileDirectory, string.Empty);
+		System.IO.File.WriteAllText (fileDirectory, currentWord);
 
 		char[] letters = shuffle(currentWord.ToCharArray ());
 
@@ -117,9 +130,9 @@ public class GameController : MonoBehaviour {
 				try{
 					for (int holder = numPerLineHighest * i; holder < (numPerLineHighest * (i + 1)); holder++) {
 						positionsY [holder] = HEIGHT / lines * (i + 1);
-						print(positionsY[holder]);
-						print(holder);
-						print(HEIGHT/lines*(i+1));
+						//print(positionsY[holder]);
+						//print(holder);
+						//print(HEIGHT/lines*(i+1));
 					}
 				}
 				catch{/* Values are finished being set */}

@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿/*
+ * J. Hoffman
+ * Creates a pop and pulse effect on text
+ */
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿/*
+ * J. Hoffman
+ * Writes/removes a character to the guess text file after it is clicked on
+ */
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,7 +17,7 @@ public class WriteCharacter : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		// Get the character the picture represents
-		print(image.GetComponent<Image>().sprite.name);
+		//print(image.GetComponent<Image>().sprite.name);
 		fileName = image.GetComponent<Image> ().sprite.name;
 		string fileDirectory = System.IO.Directory.GetCurrentDirectory ();
 

@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Game.unity
     guid: 9f6ba7b01fc0c6b47ba3c7f020cb8ece
   - enabled: 1
-    path: Assets/Scenes/Playable.unity
-    guid: 44076605d3bceab45a8eaf875ff30e65
-  - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 6bace0c593aa9df44ad5af23803d245a
   - enabled: 1
@@ -20,3 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/RemoveList.unity
     guid: 86c5a86597bd9b24dbd30d96f94e0fc0
+  - enabled: 1
+    path: Assets/Scenes/Playable.unity
+    guid: 44076605d3bceab45a8eaf875ff30e65
+  - enabled: 1
+    path: Assets/Scenes/Win.unity
+    guid: dc9a570d7344cc9448d16a15bee8d48f

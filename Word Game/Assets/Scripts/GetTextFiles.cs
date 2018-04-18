@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿/*
+ * J. Hoffman
+ * Controller for dynamically changing dropdown items
+ */
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;

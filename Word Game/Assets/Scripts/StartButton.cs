@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿/*
+ * J. Hoffman
+ * Changes scenes, simple as that
+ */
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

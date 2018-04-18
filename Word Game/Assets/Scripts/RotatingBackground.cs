@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿/*
+ * J. Hoffman
+ * Controls a rotating background
+ */
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

@@ -22,7 +22,7 @@ public class RemoveFile : MonoBehaviour {
 		string fileDirectory = System.IO.Directory.GetCurrentDirectory ();
 
 		//fileDirectory.Substring (0, fileDirectory.Length - 10 - 8);
-		fileDirectory += "/Assets/Vocab Lists/" + fileName + ".txt";
+		fileDirectory += "/Assets/Resources/Vocab Lists/" + fileName + ".txt";
 
 		print (fileDirectory);
 

@@ -23,7 +23,7 @@ public class WriteCharacter : MonoBehaviour {
 
 		// Reset the current guess file to remove residual characters
 		fileDirectory.Substring (0, fileDirectory.Length - 24);
-		fileDirectory += "/Assets/TextFiles/Guess.txt";
+		fileDirectory += "/Assets/Resources/TextFiles/Guess.txt";
 		System.IO.File.WriteAllText (fileDirectory, string.Empty);
 	}
 	
@@ -57,7 +57,7 @@ public class WriteCharacter : MonoBehaviour {
 
 		// Find the guess file and fetch the guess
 		fileDirectory.Substring (0, fileDirectory.Length - 24);
-		fileDirectory += "/Assets/TextFiles/Guess.txt";
+		fileDirectory += "/Assets/Resources/TextFiles/Guess.txt";
 		string currentGuess = System.IO.File.ReadAllText (fileDirectory);
 
 		// Clear the file and append the new character onto the current guess, then write that back to the file
@@ -79,7 +79,7 @@ public class WriteCharacter : MonoBehaviour {
 	
 		// Fetch the guess file
 		fileDirectory.Substring (0, fileDirectory.Length - 24);
-		fileDirectory += "/Assets/TextFiles/Guess.txt";
+		fileDirectory += "/Assets/Resources/TextFiles/Guess.txt";
 		string currentGuess = System.IO.File.ReadAllText (fileDirectory);
 
 		// Split the current guess for processing

@@ -28,9 +28,9 @@ public class GameController : MonoBehaviour {
 		string fileChoice;
 
 		fileDirectory.Substring (0, fileDirectory.Length - 24);
-		fileChoice = System.IO.File.ReadAllText(fileDirectory + "/Assets/TextFiles/Selection.txt");
+		fileChoice = System.IO.File.ReadAllText(fileDirectory + "/Assets/Resources/TextFiles/Selection.txt");
 
-		fileDirectory += "/Assets/Vocab Lists/" + fileChoice + ".txt";
+		fileDirectory += "/Assets/Resources/Vocab Lists/" + fileChoice + ".txt";
 
 		listWords.AddRange(System.IO.File.ReadAllLines (fileDirectory, System.Text.Encoding.GetEncoding("iso-8859-1")));
 
@@ -50,7 +50,7 @@ public class GameController : MonoBehaviour {
 		string fileDirectory = System.IO.Directory.GetCurrentDirectory ();
 
 		fileDirectory.Substring (0, fileDirectory.Length - 24);
-		fileDirectory += "/Assets/TextFiles/Guess.txt";
+		fileDirectory += "/Assets/Resources/TextFiles/Guess.txt";
 		try{
 			guess = System.IO.File.ReadAllLines(fileDirectory)[0];
 			text.text = guess;
@@ -105,7 +105,7 @@ public class GameController : MonoBehaviour {
 		string fileDirectory = System.IO.Directory.GetCurrentDirectory ();
 
 		fileDirectory.Substring (0, fileDirectory.Length - 24);
-		fileDirectory += "/Assets/TextFiles/CurrentWord.txt";
+		fileDirectory += "/Assets/Resources/TextFiles/CurrentWord.txt";
 
 		System.IO.File.WriteAllText (fileDirectory, string.Empty);
 		System.IO.File.WriteAllText (fileDirectory, currentWord);

@@ -20,7 +20,7 @@ public class AddByDirectory : MonoBehaviour {
 		directory = System.IO.Directory.GetCurrentDirectory ();
 
 		directory.Substring (0, directory.Length - 14 - 8);
-		directory += "/Assets/Vocab Lists/";
+		directory += "/Assets/Resources/Vocab Lists/";
 	}
 	
 	// Update is called once per frame

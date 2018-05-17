@@ -15,7 +15,7 @@ public class GetTextFiles : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		fileDirectory += "/Assets/Vocab Lists/";
+		fileDirectory += "/Assets/Resources/Vocab Lists/";
 		fetchNames ();
 	}
 	

@@ -24,7 +24,7 @@ public class SetFileName : MonoBehaviour {
 		string fileDirectory = System.IO.Directory.GetCurrentDirectory ();
 
 		fileDirectory.Substring (0, fileDirectory.Length - 21);
-		fileDirectory += "/Assets/TextFiles/Selection.txt";
+		fileDirectory += "/Assets/Resources/TextFiles/Selection.txt";
 
 		// Clear file of residual data and write the selected file name
 		System.IO.File.WriteAllText (fileDirectory, string.Empty);

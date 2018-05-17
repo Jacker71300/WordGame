@@ -24,7 +24,7 @@ public class Hint : MonoBehaviour {
 		string fileDirectory = System.IO.Directory.GetCurrentDirectory ();
 
 		fileDirectory.Substring (0, fileDirectory.Length - 24);
-		fileDirectory += "/Assets/TextFiles/CurrentWord.txt";
+		fileDirectory += "/Assets/Resources/TextFiles/CurrentWord.txt";
 
 		// Read in the file and see if it is still the same
 		string holder = System.IO.File.ReadAllText (fileDirectory);

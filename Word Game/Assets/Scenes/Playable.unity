@@ -194,7 +194,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 561633723}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 428.5, y: 159.5, z: 0}
+  m_LocalPosition: {x: 423.5, y: 155, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 785602960}
@@ -218,6 +218,7 @@ GameObject:
   - component: {fileID: 689532539}
   - component: {fileID: 689532538}
   - component: {fileID: 689532537}
+  - component: {fileID: 689532540}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -298,6 +299,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &689532540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 689532536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ad60107532a494499691f8b1191d570, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &785602957
 GameObject:
   m_ObjectHideFlags: 0

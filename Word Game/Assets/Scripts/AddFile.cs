@@ -41,10 +41,10 @@ public class AddFile : MonoBehaviour {
 			string fileDirectory = System.IO.Directory.GetCurrentDirectory ();
 
 			fileDirectory.Substring (0, fileDirectory.Length - 14 - 8);
-			fileDirectory += "/Assets/Vocab Lists/" + fileName + ".txt";
+			fileDirectory += "/Assets/Resources/Vocab Lists/" + fileName + ".txt";
 
 			// create the file
-			print (fileDirectory);
+			//**************print (fileDirectory);
 			System.IO.File.Create (fileDirectory).Close ();
 			//print ("done");
 

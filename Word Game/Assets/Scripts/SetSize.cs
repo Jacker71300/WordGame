@@ -16,7 +16,7 @@ public class SetSize : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		transform.localScale = new Vector3 (Screen.width * width / picWidth * 3.25f, Screen.height * height / picHeight * 3.25f);
+		transform.localScale = new Vector3 (Screen.width * width / picWidth, Screen.height * height / picHeight);
 	}
 	
 	// Update is called once per frame

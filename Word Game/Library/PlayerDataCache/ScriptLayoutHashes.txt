@@ -148,3 +148,4 @@ ff32d2aac48d4fb30fc912bbe13f9879 Assembly-CSharp.dll:.GetTextFiles
 2028d3dce5fbf66cd2cedd2d77691e0e Assembly-CSharp.dll:.AddByDirectory
 8a3f25a45de1c063b6cca18feefad38d Assembly-CSharp.dll:.RotatingBackground
 e03786907b485bf73871e58be148f137 Assembly-CSharp.dll:.AddFile
+e042a32074a6a922295d2758b7b3530c Assembly-CSharp.dll:.FlyingText

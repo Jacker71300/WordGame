@@ -3,36 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FlyingTextTest : MonoBehaviour {
-    /*public float speed = 1.0f;
-    public enum Sides
-    {
-        Left,
-        Right,
-        Top,
-        Bottom
-    }
-    public Sides side;
 
-    private Vector2 inside;
-    private Vector2 outside;
-
-    void Start()
-    {
-        switch(side) {
-        case side.Top:
-                GetComponent<Rigidbody2D>().velocity = Vector2.down * speed;
-        case side.Bottom:
-                GetComponent<Rigidbody2D>().velocity = Vector2.up * speed;
-        case side.Left:
-                GetComponent<Rigidbody2D>().velocity = Vector2.right * speed;
-        case side.Right:
-                GetComponent<Rigidbody2D>().velocity = Vector2.left * speed;
-        }
-    }
-    void Update()
-    {
-        if ()
-    }*/
     public enum Sides
     {
         Left,
@@ -47,10 +18,15 @@ public class FlyingTextTest : MonoBehaviour {
     /// The transition factor (from 0 to 1) between inside and outside.
     //[Range(0, 1)]
     //public float transition;
-    public float speed = 50.0f;
+    public float speed = 100.0f;
 
     /// Inside is assumed to be the start position of the RectTransform.
-    private Vector2 end;
+    private Vector2 finalPos;
+    private float finalX;
+    private float finalY;
+    private Vector2 currentPos;
+    private float currentX;
+    private float currentY;
 
     /// Outside is the position
     /// where the rect transform is completely outside of its canvas on the given side.
@@ -66,85 +42,157 @@ public class FlyingTextTest : MonoBehaviour {
     {
         trans = GetComponent<RectTransform>();
         canvas = GetComponentInParent<Canvas>();
-        end = trans.position;
+        finalPos = trans.localPosition;
+        finalX = finalPos.x;
+        finalY = finalPos.y;
+        switch (side)
+        {
+            case Sides.Top:
+                CalculateDistance();
+                trans.localPosition = Vector2.up * ((distance * 3) / 4);
+                currentPos = trans.localPosition;
+                currentY = currentPos.y;
+                break;
+            case Sides.Bottom:
+                CalculateDistance();
+                trans.localPosition = Vector2.down * ((distance * 3) / 4);
+                currentPos = trans.localPosition;
+                currentY = currentPos.y;
+                break;
+            case Sides.Left:
+                CalculateDistance();
+                trans.localPosition = Vector2.left * ((distance * 3) / 4);
+                currentPos = trans.localPosition;
+                currentX = currentPos.x;
+                break;
+            case Sides.Right:
+                CalculateDistance();
+                trans.localPosition = Vector2.right * ((distance * 3) / 4);
+                currentPos = trans.localPosition;
+                currentX = currentPos.x;
+                break;
+            default:
+                currentPos = trans.localPosition;
+                currentX = currentPos.x;
+                currentY = currentPos.y;
+                break;
+        }
+        /*
         switch (side)
         {
             case Sides.Top:
                 CalculateOutside();
-                trans.position = Vector2.up * distance;
+                while (currentPos != outside)
+                {
+                    GetComponent<Rigidbody2D>().velocity = Vector2.up * 1000000000;
+                    currentPos = trans.position;
+                }
                 break;
             case Sides.Bottom:
-                trans.position = Vector2.down * distance;
+                CalculateOutside();
+                while (currentPos != outside)
+                {
+                    GetComponent<Rigidbody2D>().velocity = Vector2.down * 1000000000;
+                    currentPos = outside;
+                }
                 break;
             case Sides.Left:
-                trans.position = Vector2.left * distance;
+                CalculateOutside();
+                while (currentPos != outside)
+                {
+                    GetComponent<Rigidbody2D>().velocity = Vector2.left * 1000000000;
+                    currentPos = outside;
+                }
                 break;
             case Sides.Right:
-                trans.position = Vector2.right * distance;
+                CalculateOutside();
+                //while (currentPos != outside)
+                //{
+                GetComponent<Rigidbody2D>().velocity = Vector2.right * 18439999900000000000;
+                //currentPos = trans.position;
+                //}
                 break;
             default:
                 break;
-        }
+        }*/
     }
 
     void Update()
     {
-        CalculateOutside();
-        Vector2 test = trans.position;
+        CalculateDistance();
         //rectTransform.position = Vector2.Lerp(outside, inside, speed);
-        if (end != test)
+        //if (finalPos != currentPos)
+        //{
+        switch (side)
         {
-            switch (side)
-            {
-                case Sides.Top:
+            case Sides.Top:
+                if (finalY != currentY) {
                     GetComponent<Rigidbody2D>().velocity = Vector2.down * speed;
+                    currentPos = trans.position;
+                    currentY = currentPos.y;
+                }
                     break;
-                case Sides.Bottom:
+            case Sides.Bottom:
+                if (finalY != currentY)
+                {
                     GetComponent<Rigidbody2D>().velocity = Vector2.up * speed;
-                    break;
-                case Sides.Left:
+                    currentPos = trans.position;
+                    currentY = currentPos.y;
+                }
+                break;
+            case Sides.Left:
+                if (finalX != currentX)
+                {
                     GetComponent<Rigidbody2D>().velocity = Vector2.right * speed;
-                    break;
-                case Sides.Right:
+                    currentPos = trans.position;
+                    currentX = currentPos.x;
+                }
+                break;
+            case Sides.Right:
+                if (finalX != currentX)
+                {
                     GetComponent<Rigidbody2D>().velocity = Vector2.left * speed;
-                    break;
-                default:
-                    break;
-            }
+                    currentPos = trans.position;
+                    currentX = currentPos.x;
+                }
+                break;
+            default:
+                break;
         }
+        //}
     }
 
-    void CalculateOutside()
+    void CalculateDistance()
     {
-        var position = end;
+        var position = finalPos;
         var size = canvas.scaleFactor * trans.rect.size;
-        var pivot = trans.pivot;
+        //var pivot = trans.pivot;
         var canvasSize = canvas.pixelRect.size;
 
         switch (side)
         {
             case Sides.Top:
-                var distanceToTop = canvasSize.y - position.y;
-                outside = end + new Vector2(0f, distanceToTop + size.y * (pivot.y));
-                distance = distanceToTop;
+                distance = canvasSize.y - position.y;
+                //outside = finalPos + new Vector2(0f, distanceToTop + size.y * (pivot.y));
+                //outside = finalPos + new Vector2(0f, distanceToTop + size.y);
                 break;
             case Sides.Bottom:
-                var distanceToBottom = position.y;
-                outside = end + new Vector2(0f, -distanceToBottom - size.y * (1 - pivot.y));
-                distance = distanceToBottom;
+                distance = position.y;
+                //outside = finalPos + new Vector2(0f, -distanceToBottom - size.y * (1 - pivot.y));
+                //outside = finalPos + new Vector2(0f, -distanceToBottom - size.y);
                 break;
             case Sides.Left:
-                var distanceToLeft = position.x;
-                outside = end + new Vector2(-distanceToLeft - size.x * (1 - pivot.x), 0f);
-                distance = distanceToLeft;
+                distance = position.x;
+                //outside = finalPos + new Vector2(-distanceToLeft - size.x * (1 - pivot.x), 0f);
+                //outside = finalPos + new Vector2(-distanceToLeft - size.x, 0f);
                 break;
             case Sides.Right:
-                var distanceToRight = canvasSize.x - position.x;
-                outside = end + new Vector2(distanceToRight + size.x * (pivot.x), 0f);
-                distance = distanceToRight;
+                distance = canvasSize.x - position.x;
+                //outside = finalPos + new Vector2(distanceToRight + size.x * (pivot.x), 0f);
+                //outside = finalPos + new Vector2(distanceToRight + size.x, 0f);
                 break;
             default:
-                outside = Vector2.zero;
+                //outside = Vector2.zero;
                 break;
         }
     }

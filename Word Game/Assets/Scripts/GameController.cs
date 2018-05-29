@@ -1,6 +1,9 @@
 ﻿/*
  * J. Hoffman
  * Controls the game while words are being guessed
+ * Brennan Mulligan
+ * Added Point System and prints how many points the player got
+ * out of how many words are inside the list selected.
  */
 using System.Collections;
 using System.Collections.Generic;
@@ -17,6 +20,8 @@ public class GameController : MonoBehaviour {
 	public Transform canvas;
 	public Text text;
 	public Text hintText;
+	public int points;
+	public int numWords;
 
 	private string guess = "";
 	private string currentWord = "";
@@ -26,6 +31,7 @@ public class GameController : MonoBehaviour {
 		// Find the vocab list file and read all vocab words into an array
 		string fileDirectory = System.IO.Directory.GetCurrentDirectory ();
 		string fileChoice;
+		points = 0;
 
 		fileDirectory.Substring (0, fileDirectory.Length - 24);
 		fileChoice = System.IO.File.ReadAllText(fileDirectory + "/Assets/Resources/TextFiles/Selection.txt");
@@ -62,6 +68,7 @@ public class GameController : MonoBehaviour {
 
 		// Checks to see if guess is correct
 		if(guess.ToUpper().Replace(" ", "").Equals(currentWord.ToUpper().Replace(" ", ""))){
+			points++;
 			WordSuccess();
 		}
 	}
@@ -91,6 +98,10 @@ public class GameController : MonoBehaviour {
 
 	// Handles when all words have been completed
 	void Win(){
+		//Saves points
+		string fileDirectory = System.IO.Directory.GetCurrentDirectory ();
+		fileDirectory += "/Assets/Resources/TextFiles/points.txt";
+		System.IO.File.WriteAllText (fileDirectory, points.ToString());
 		// Change scene to main menu
 		UnityEngine.SceneManagement.SceneManager.LoadScene ("Win");
 	}

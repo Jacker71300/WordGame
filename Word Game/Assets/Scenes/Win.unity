@@ -286,10 +286,10 @@ GameObject:
   - component: {fileID: 458978980}
   - component: {fileID: 458978982}
   - component: {fileID: 458978981}
-  - component: {fileID: 458978983}
   - component: {fileID: 458978984}
+  - component: {fileID: 458978983}
   m_Layer: 5
-  m_Name: Text (1)
+  m_Name: pointtext
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -336,7 +336,7 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 60
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 0
     m_MaxSize: 100
     m_Alignment: 0
@@ -345,7 +345,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: You got out of points!
+  m_Text: 
 --- !u!222 &458978982
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -363,6 +363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffb1804a5bccd3d4baee6adb5c49a476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointtext: {fileID: 0}
 --- !u!114 &458978984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -461,7 +462,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1388051753}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 375.5, y: 159.5, z: 0}
+  m_LocalPosition: {x: 528.5, y: 247, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1400598158}

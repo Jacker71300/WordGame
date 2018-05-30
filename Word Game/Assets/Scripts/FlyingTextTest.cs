@@ -119,43 +119,52 @@ public class FlyingTextTest : MonoBehaviour {
         //rectTransform.position = Vector2.Lerp(outside, inside, speed);
         //if (finalPos != currentPos)
         //{
+		float distanceSoFar = 0.0f;
+		float distanceByStep = 0.0f;
+		int count = 0;
         switch (side)
         {
-            case Sides.Top:
-                if (finalY != currentY) {
-                    GetComponent<Rigidbody2D>().velocity = Vector2.down * speed;
-                    currentPos = trans.position;
-                    currentY = currentPos.y;
-                }
+		case Sides.Top:
+			if (finalY != currentY) {
+				GetComponent<Rigidbody2D> ().velocity = Vector2.down * speed;
+				currentPos = trans.position;
+				currentY = currentPos.y;
+			} else
+				speed = 0.0f;
                     break;
-            case Sides.Bottom:
-                if (finalY != currentY)
-                {
-                    GetComponent<Rigidbody2D>().velocity = Vector2.up * speed;
-                    currentPos = trans.position;
-                    currentY = currentPos.y;
-                }
+		case Sides.Bottom:
+			if (finalY != currentY) {
+				GetComponent<Rigidbody2D> ().velocity = Vector2.up * speed;
+				currentPos = trans.position;
+				currentY = currentPos.y;
+			} else
+				speed = 0.0f;
                 break;
-            case Sides.Left:
-                if (finalX != currentX)
-                {
-                    GetComponent<Rigidbody2D>().velocity = Vector2.right * speed;
-                    currentPos = trans.position;
-                    currentX = currentPos.x;
-                }
+		case Sides.Left:
+			if (finalX != currentX) {
+				GetComponent<Rigidbody2D> ().velocity = Vector2.right * speed;
+				currentPos = trans.position;
+				currentX = currentPos.x;
+			} else
+				speed = 0.0f;
                 break;
-            case Sides.Right:
-                if (finalX != currentX)
-                {
-                    GetComponent<Rigidbody2D>().velocity = Vector2.left * speed;
-                    currentPos = trans.position;
-                    currentX = currentPos.x;
-                }
+		case Sides.Right:
+			if (finalX != (finalX + distanceSoFar) || count == 0) {
+				GetComponent<Rigidbody2D> ().velocity = Vector2.left * speed;
+				currentPos = trans.position;
+				currentX = currentPos.x;
+				if (count == 0) {
+					count++;
+					distanceByStep = currentX;
+				}
+				distanceByStep = distanceByStep - currentX;
+				distanceSoFar = distanceByStep + distanceSoFar;
+			} else
+				speed = 0.0f;
                 break;
             default:
                 break;
         }
-        //}
     }
 
     void CalculateDistance()

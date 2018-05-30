@@ -11,16 +11,14 @@ public class FlyingTextTest : MonoBehaviour {
         Top,
         Bottom
     }
-
-    /// The side from where the rect transform should fly in.
+    //The side from where the rect transform should fly in.
     public Sides side;
 
-    /// The transition factor (from 0 to 1) between inside and outside.
-    //[Range(0, 1)]
-    //public float transition;
+    //Speed of the object's movement
     public float speed = 100.0f;
 
-    /// Inside is assumed to be the start position of the RectTransform.
+    //Position and coordinates of where it should stop and
+    //where the object is as it's moving.
     private Vector2 finalPos;
     private float finalX;
     private float finalY;
@@ -28,14 +26,12 @@ public class FlyingTextTest : MonoBehaviour {
     private float currentX;
     private float currentY;
 
-    /// Outside is the position
-    /// where the rect transform is completely outside of its canvas on the given side.
-    private Vector2 outside;
+    //Distance from object to the side it should fly in from.
     private float distance;
 
-    /// Reference to the rect transform component.
+    //Reference to the rect transform component.
     private RectTransform trans;
-    /// Reference to the canvas component this RectTransform is placed on.
+    //Reference to the canvas component this RectTransform is placed on.
     private Canvas canvas;
 
     void Start()
@@ -166,33 +162,23 @@ public class FlyingTextTest : MonoBehaviour {
     {
         var position = finalPos;
         var size = canvas.scaleFactor * trans.rect.size;
-        //var pivot = trans.pivot;
         var canvasSize = canvas.pixelRect.size;
 
         switch (side)
         {
             case Sides.Top:
                 distance = canvasSize.y - position.y;
-                //outside = finalPos + new Vector2(0f, distanceToTop + size.y * (pivot.y));
-                //outside = finalPos + new Vector2(0f, distanceToTop + size.y);
                 break;
             case Sides.Bottom:
                 distance = position.y;
-                //outside = finalPos + new Vector2(0f, -distanceToBottom - size.y * (1 - pivot.y));
-                //outside = finalPos + new Vector2(0f, -distanceToBottom - size.y);
                 break;
             case Sides.Left:
                 distance = position.x;
-                //outside = finalPos + new Vector2(-distanceToLeft - size.x * (1 - pivot.x), 0f);
-                //outside = finalPos + new Vector2(-distanceToLeft - size.x, 0f);
                 break;
             case Sides.Right:
                 distance = canvasSize.x - position.x;
-                //outside = finalPos + new Vector2(distanceToRight + size.x * (pivot.x), 0f);
-                //outside = finalPos + new Vector2(distanceToRight + size.x, 0f);
                 break;
             default:
-                //outside = Vector2.zero;
                 break;
         }
     }

@@ -26,11 +26,6 @@ public class WriteCharacter : MonoBehaviour {
 		fileDirectory += "/Assets/Resources/TextFiles/Guess.txt";
 		System.IO.File.WriteAllText (fileDirectory, string.Empty);
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
 	// Handles when the picture is clicked on
 	public void changeChar(){

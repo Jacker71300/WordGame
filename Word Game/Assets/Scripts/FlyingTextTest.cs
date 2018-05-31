@@ -36,33 +36,43 @@ public class FlyingTextTest : MonoBehaviour {
 
     void Start()
     {
+        //Instantiates variables with corresponding Components
         trans = GetComponent<RectTransform>();
         canvas = GetComponentInParent<Canvas>();
+        
+        //Takes in the position of the object to be used as a place to stop
         finalPos = trans.localPosition;
         finalX = finalPos.x;
         finalY = finalPos.y;
+
+        //Kicks the object off the screen to the side that gamemaker chooses
+        //Also takes in the position of the object at that state for later
         switch (side)
         {
             case Sides.Top:
                 CalculateDistance();
+                //Kicks object offscreen
                 trans.localPosition = Vector2.up * ((distance * 3) / 4);
                 currentPos = trans.localPosition;
                 currentY = currentPos.y;
                 break;
             case Sides.Bottom:
                 CalculateDistance();
+                //Kicks object offscreen
                 trans.localPosition = Vector2.down * ((distance * 3) / 4);
                 currentPos = trans.localPosition;
                 currentY = currentPos.y;
                 break;
             case Sides.Left:
                 CalculateDistance();
+                //Kicks object offscreen
                 trans.localPosition = Vector2.left * ((distance * 3) / 4);
                 currentPos = trans.localPosition;
                 currentX = currentPos.x;
                 break;
             case Sides.Right:
                 CalculateDistance();
+                //Kicks object offscreen
                 trans.localPosition = Vector2.right * ((distance * 3) / 4);
                 currentPos = trans.localPosition;
                 currentX = currentPos.x;
@@ -73,55 +83,18 @@ public class FlyingTextTest : MonoBehaviour {
                 currentY = currentPos.y;
                 break;
         }
-        /*
-        switch (side)
-        {
-            case Sides.Top:
-                CalculateOutside();
-                while (currentPos != outside)
-                {
-                    GetComponent<Rigidbody2D>().velocity = Vector2.up * 1000000000;
-                    currentPos = trans.position;
-                }
-                break;
-            case Sides.Bottom:
-                CalculateOutside();
-                while (currentPos != outside)
-                {
-                    GetComponent<Rigidbody2D>().velocity = Vector2.down * 1000000000;
-                    currentPos = outside;
-                }
-                break;
-            case Sides.Left:
-                CalculateOutside();
-                while (currentPos != outside)
-                {
-                    GetComponent<Rigidbody2D>().velocity = Vector2.left * 1000000000;
-                    currentPos = outside;
-                }
-                break;
-            case Sides.Right:
-                CalculateOutside();
-                //while (currentPos != outside)
-                //{
-                GetComponent<Rigidbody2D>().velocity = Vector2.right * 18439999900000000000;
-                //currentPos = trans.position;
-                //}
-                break;
-            default:
-                break;
-        }*/
     }
 
     void Update()
     {
         CalculateDistance();
-        //rectTransform.position = Vector2.Lerp(outside, inside, speed);
-        //if (finalPos != currentPos)
-        //{
+        //Test Variables (May or may not be in final product)
+        //Used to help calculate how far object is traveled and when to stop
 		float distanceSoFar = 0.0f;
 		float distanceByStep = 0.0f;
 		int count = 0;
+
+        //Moves letters across the screen until they reach position needed
         switch (side)
         {
 		case Sides.Top:
@@ -131,7 +104,7 @@ public class FlyingTextTest : MonoBehaviour {
 				currentY = currentPos.y;
 			} else
 				speed = 0.0f;
-                    break;
+                break;
 		case Sides.Bottom:
 			if (finalY != currentY) {
 				GetComponent<Rigidbody2D> ().velocity = Vector2.up * speed;
@@ -148,6 +121,7 @@ public class FlyingTextTest : MonoBehaviour {
 			} else
 				speed = 0.0f;
                 break;
+        //This side is different so I can test different methods to get letters to stop moving
 		case Sides.Right:
 			if (finalX != (finalX + distanceSoFar) || count == 0) {
 				GetComponent<Rigidbody2D> ().velocity = Vector2.left * speed;
@@ -167,12 +141,15 @@ public class FlyingTextTest : MonoBehaviour {
         }
     }
 
+    //Calculates the distance of the object to the chosen side
     void CalculateDistance()
     {
+        //Variables
         var position = finalPos;
         var size = canvas.scaleFactor * trans.rect.size;
         var canvasSize = canvas.pixelRect.size;
 
+        //Finds of object to each side
         switch (side)
         {
             case Sides.Top:

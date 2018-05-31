@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PointPrinter : MonoBehaviour {
-	//Variable
+	//Variables
 	public ArrayList listWords = new ArrayList();
 	string points;
     public Text pointtext = null;
@@ -12,19 +12,17 @@ public class PointPrinter : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
+        //Declares the Current File Directory
         string fileDirectory = System.IO.Directory.GetCurrentDirectory ();
 
+        //Takes in only the points text file that is created in Game Controller after each correct guess
         fileDirectory.Substring (0, fileDirectory.Length - 24);
         points = System.IO.File.ReadAllText(fileDirectory + "/Assets/Resources/TextFiles/points.txt");
-
+        
+        //Supposedly takes in all the words
         listWords.AddRange(System.IO.File.ReadAllLines (fileDirectory, System.Text.Encoding.GetEncoding("iso-8859-1")));
-        pointtext.text = "You got " + points + " out of " + listWords.Count + " points!";
+
+        //Supposedly changes text
+        pointtext.text = "If this works, it will read this.";
 	}
-    void Update()
-    {
-        if (Input.GetKey(KeyCode.Space))
-        {
-            pointtext.text = "Text has changed.";
-        }
-    }
 }
